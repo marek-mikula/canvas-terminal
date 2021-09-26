@@ -1,19 +1,19 @@
 {
-  "name": "canvas-console",
+  "name": "canvas-terminal",
   "version": "1.0.0",
   "description": "Javascript simulator of terminal.",
-  "main": "canvas-console.js",
+  "main": "canvas-terminal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marek-mikula/canvas-console.git"
+    "url": "git+https://github.com/marek-mikula/canvas-terminal.git"
   },
   "author": "Marek Mikula",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marek-mikula/canvas-console/issues"
+    "url": "https://github.com/marek-mikula/canvas-terminal/issues"
   },
-  "homepage": "https://github.com/marek-mikula/canvas-console#readme"
+  "homepage": "https://github.com/marek-mikula/canvas-terminal#readme"
 }
