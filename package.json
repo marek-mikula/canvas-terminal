@@ -1,0 +1,19 @@
+{
+  "name": "canvas-console",
+  "version": "1.0.0",
+  "description": "Javascript simulator of terminal.",
+  "main": "canvas-console.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marek-mikula/canvas-console.git"
+  },
+  "author": "Marek Mikula",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marek-mikula/canvas-console/issues"
+  },
+  "homepage": "https://github.com/marek-mikula/canvas-console#readme"
+}
