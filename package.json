@@ -2,9 +2,10 @@
   "name": "canvas-terminal",
   "version": "1.0.0",
   "description": "Javascript simulator of terminal.",
-  "main": "canvas-terminal.js",
+  "main": "src/canvas-terminal.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/marek-mikula/canvas-terminal/issues"
   },
-  "homepage": "https://github.com/marek-mikula/canvas-terminal#readme"
+  "homepage": "https://github.com/marek-mikula/canvas-terminal#readme",
+  "devDependencies": {
+    "webpack": "^5.54.0",
+    "webpack-cli": "^4.8.0"
+  }
 }
