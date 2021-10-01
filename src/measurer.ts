@@ -1,14 +1,15 @@
 import {buildFont} from "./utils";
+import {Terminal} from "./terminal";
 
 export class Measurer {
 
-	terminal;
+	terminal: Terminal;
 
-	constructor(terminal) {
+	constructor(terminal: Terminal) {
 		this.terminal = terminal;
 	}
 
-	measureLine(line) {
+	measureLine(line: string) {
 		this.terminal.canvas.ctx.font = buildFont(
 			this.terminal.config.text.font
 		)

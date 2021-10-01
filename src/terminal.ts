@@ -1,7 +1,8 @@
 import {canvasFactory} from "./factories";
-import {mergeObjects} from "./utils";
+import {mergeConfig} from "./utils";
 import {InputBuffer} from "./input-buffer";
 import {Drawer} from "./drawer";
+import {Canvas} from "./canvas";
 
 const defaultConfig = {
 	frequency: 1500,
@@ -33,17 +34,17 @@ export class Terminal {
 
 	drawer = new Drawer(this);
 
-	canvas;
+	canvas: Canvas;
 
-	config;
+	config: ConfigInterface;
 
-	#interval;
+	#interval: number;
 
-	constructor(selector, config = {}) {
+	constructor(selector: string, config = {}) {
 		this.canvas = canvasFactory(this, selector);
-		this.config = mergeObjects(defaultConfig, config);
+		this.config = mergeConfig(defaultConfig, config);
 
-		this.#interval = setInterval(
+		this.#interval = window.setInterval(
 			this.drawer.draw,
 			this.config.frequency,
 			this.buffer
