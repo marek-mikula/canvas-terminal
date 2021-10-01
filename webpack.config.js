@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
 	mode: "development", // production
 	entry: {
-		"canvas-terminal": path.resolve(__dirname, 'src/canvas-terminal.js')
+		"app": path.resolve(__dirname, 'src/app.js')
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
