@@ -19,13 +19,15 @@ export class Canvas {
         return this.element.clientWidth;
     }
 
+    get letterWidth(): number {
+        return this.terminal.buffer.measurer.measureChars('A');
+    }
+
     get maxLineWidth(): number {
-        return this.width - (2 * this.terminal.config.text.font.size);
+        return this.width - (2 * this.letterWidth);
     }
 
     get maxCharsWidth(): number {
-        const maxLineWidth: number = this.maxLineWidth;
-        const letterWidth: number = this.terminal.buffer.measurer.measureChars('A');
-        return Math.floor(maxLineWidth / letterWidth);
+        return Math.ceil(this.maxLineWidth / this.letterWidth);
     }
 }
