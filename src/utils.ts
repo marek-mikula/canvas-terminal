@@ -1,7 +1,7 @@
 // Colors
 
 export const rgbToColor = ({r, g, b}: ColorInterface): string => {
-    return `rgb(${r},${g},${b})`;
+    return `rgba(${r},${g},${b},1)`;
 };
 
 // Text

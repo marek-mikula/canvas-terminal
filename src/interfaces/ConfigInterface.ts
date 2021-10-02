@@ -1,4 +1,5 @@
 interface ConfigInterface extends StringAccessibleInterface {
+    name: string,
     frequency: number,
     canvas: {
         background: ColorInterface,
@@ -7,6 +8,9 @@ interface ConfigInterface extends StringAccessibleInterface {
     text: {
         color: ColorInterface,
         font: FontInterface,
-        linePadding: number,
+        lineSpacing: number,
+    },
+    marker: {
+        template: string,
     }
 }

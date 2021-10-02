@@ -27,7 +27,7 @@ export class Drawer {
                 this.terminal.config.canvas.padding,
                 this.terminal.config.canvas.padding + index
             );
-            index += (this.terminal.config.text.linePadding + this.terminal.config.text.font.size);
+            index += (this.terminal.config.text.lineSpacing + this.terminal.config.text.font.size);
         }
     }
 

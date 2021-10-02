@@ -5,6 +5,7 @@ import {Drawer} from "./drawer";
 import {Canvas} from "./canvas";
 
 const defaultConfig = {
+    name: 'canvas-terminal.js',
     frequency: 25,
     canvas: {
         background: {
@@ -16,15 +17,19 @@ const defaultConfig = {
     },
     text: {
         color: {
-            r: 255,
-            g: 255,
-            b: 255,
+            r: 74,
+            g: 246,
+            b: 38,
         },
         font: {
-            size: 15,
+            size: 13,
             font: 'monospace' // should be only monospaced fonts
         },
-        linePadding: 3,
+        lineSpacing: 3,
+        markerTemplate: '{user}@{canvasName} %'
+    },
+    marker: {
+        template: '{user}@{canvasName} %',
     }
 };
 
