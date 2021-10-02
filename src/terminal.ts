@@ -21,10 +21,10 @@ const defaultConfig = {
             b: 255,
         },
         font: {
-            size: 12,
-            font: "Consolas"
+            size: 15,
+            font: 'monospace' // should be only monospaced fonts
         },
-        linePadding: 5,
+        linePadding: 3,
     }
 };
 

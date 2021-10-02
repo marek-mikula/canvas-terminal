@@ -1,6 +1,6 @@
 import {Terminal} from "./terminal";
 import {InputBuffer} from "./input-buffer";
-import {rgbToColor} from "./utils";
+import {buildFont, rgbToColor} from "./utils";
 
 export class Drawer {
     terminal: Terminal;
@@ -11,8 +11,23 @@ export class Drawer {
 
     draw(inputBuffer: InputBuffer): void {
         this.#drawBackground();
+
+        let index: number = 0;
+
         for (const line of inputBuffer) {
-            console.log(line);
+            this.terminal.canvas.ctx.textBaseline = "top";
+            this.terminal.canvas.ctx.font = buildFont(
+                this.terminal.config.text.font
+            );
+            this.terminal.canvas.ctx.fillStyle = rgbToColor(
+                this.terminal.config.text.color
+            )
+            this.terminal.canvas.ctx.fillText(
+                line,
+                this.terminal.config.canvas.padding,
+                this.terminal.config.canvas.padding + index
+            );
+            index += (this.terminal.config.text.linePadding + this.terminal.config.text.font.size);
         }
     }
 

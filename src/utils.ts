@@ -10,6 +10,12 @@ export const buildFont = ({size, font}: FontInterface): string => {
     return `${size}px ${font}`;
 }
 
+export const chunkStr = (string: string, length: number): Array<string> => {
+    const pattern = `.{1,${length}}`;
+    const res = string.match(new RegExp(pattern, 'g'));
+    return res !== null ? res : [];
+};
+
 // Objects
 
 export const mergeConfig = (obj1: ConfigInterface, obj2: StringAccessibleInterface): ConfigInterface => {

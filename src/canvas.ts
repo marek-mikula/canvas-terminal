@@ -18,4 +18,14 @@ export class Canvas {
     get width(): number {
         return this.element.clientWidth;
     }
+
+    get maxLineWidth(): number {
+        return this.width - (2 * this.terminal.config.text.font.size);
+    }
+
+    get maxCharsWidth(): number {
+        const maxLineWidth: number = this.maxLineWidth;
+        const letterWidth: number = this.terminal.buffer.measurer.measureChars('A');
+        return Math.floor(maxLineWidth / letterWidth);
+    }
 }

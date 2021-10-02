@@ -9,11 +9,11 @@ export class Measurer {
 		this.terminal = terminal;
 	}
 
-	measureLine(line: string): number {
+	measureChars(chars: string): number {
 		this.terminal.canvas.ctx.font = buildFont(
 			this.terminal.config.text.font
 		)
-		return this.terminal.canvas.ctx.measureText(line).width;
+		return this.terminal.canvas.ctx.measureText(chars).width;
 	}
 
 
