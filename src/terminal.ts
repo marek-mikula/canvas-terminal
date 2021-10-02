@@ -5,49 +5,49 @@ import {Drawer} from "./drawer";
 import {Canvas} from "./canvas";
 
 const defaultConfig = {
-	frequency: 1500,
-	canvas: {
-		background: {
-			r: 0,
-			g: 0,
-			b: 0,
-		},
-		padding: 5,
-	},
-	text: {
-		color: {
-			r: 255,
-			g: 255,
-			b: 255,
-		},
-		font: {
-			size: 15,
-			font: "Consolas"
-		},
-		linePadding: 5,
-	}
+    frequency: 25,
+    canvas: {
+        background: {
+            r: 0,
+            g: 0,
+            b: 0,
+        },
+        padding: 5,
+    },
+    text: {
+        color: {
+            r: 255,
+            g: 255,
+            b: 255,
+        },
+        font: {
+            size: 12,
+            font: "Consolas"
+        },
+        linePadding: 5,
+    }
 };
 
 export class Terminal {
 
-	buffer = new InputBuffer(this);
+    buffer: InputBuffer = new InputBuffer(this);
 
-	drawer = new Drawer(this);
+    drawer: Drawer = new Drawer(this);
 
-	canvas: Canvas;
+    canvas: Canvas;
 
-	config: ConfigInterface;
+    config: ConfigInterface;
 
-	#interval: number;
+    #interval: number;
 
-	constructor(selector: string, config = {}) {
-		this.canvas = canvasFactory(this, selector);
-		this.config = mergeConfig(defaultConfig, config);
+    constructor(selector: string, config = {}) {
+        this.canvas = canvasFactory(this, selector);
+        this.config = mergeConfig(defaultConfig, config);
 
-		this.#interval = window.setInterval(
-			this.drawer.draw,
-			this.config.frequency,
-			this.buffer
-		)
-	}
+        this.#interval = window.setInterval(
+            this.drawer.draw.bind(this.drawer),
+            this.config.frequency,
+            this.buffer
+        )
+    }
 }

@@ -9,7 +9,7 @@ export class Measurer {
 		this.terminal = terminal;
 	}
 
-	measureLine(line: string) {
+	measureLine(line: string): number {
 		this.terminal.canvas.ctx.font = buildFont(
 			this.terminal.config.text.font
 		)

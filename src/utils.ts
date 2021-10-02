@@ -1,12 +1,12 @@
 // Colors
 
-const rgbToColor = ({r, g, b}: ColorInterface) => {
+export const rgbToColor = ({r, g, b}: ColorInterface): string => {
     return `rgb(${r},${g},${b})`;
 };
 
 // Text
 
-export const buildFont = ({size, font}: FontInterface) => {
+export const buildFont = ({size, font}: FontInterface): string => {
     return `${size}px ${font}`;
 }
 

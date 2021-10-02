@@ -1,7 +1,7 @@
 import {Canvas} from "./canvas";
 import {Terminal} from "./terminal";
 
-export const canvasFactory = (terminal: Terminal, id: string) => {
+export const canvasFactory = (terminal: Terminal, id: string): Canvas => {
     const element = document.getElementById(id);
 
     if (element === null) {
