@@ -12,5 +12,8 @@ interface ConfigInterface extends StringAccessibleInterface {
     },
     marker: {
         template: string,
+    },
+    buffer: {
+        maxBufferSize: number
     }
 }

@@ -12,9 +12,21 @@ export class Drawer {
     draw(inputBuffer: InputBuffer): void {
         this.#drawBackground();
 
-        let index: number = 0;
+        const linesLength: number = inputBuffer.linesNumber;
+        const maxLines: number = this.terminal.canvas.maxLines;
 
+        let skipLines: number = linesLength - maxLines - inputBuffer.offset;
+
+        let additionalPadding: number = 0;
+        let linesShown: number = 0;
         for (const line of inputBuffer) {
+            // skip lines that should not be visible
+            // ship other lines that are overflowing max lines to show
+            if (skipLines > 0 || linesShown === maxLines) {
+                skipLines--;
+                continue;
+            }
+
             this.terminal.canvas.ctx.textBaseline = "top";
             this.terminal.canvas.ctx.font = buildFont(
                 this.terminal.config.text.font
@@ -25,9 +37,11 @@ export class Drawer {
             this.terminal.canvas.ctx.fillText(
                 line,
                 this.terminal.config.canvas.padding,
-                this.terminal.config.canvas.padding + index
+                this.terminal.config.canvas.padding + additionalPadding
             );
-            index += (this.terminal.config.text.lineSpacing + this.terminal.config.text.font.size);
+            additionalPadding += (this.terminal.config.text.lineSpacing + this.terminal.config.text.font.size);
+
+            linesShown++;
         }
     }
 

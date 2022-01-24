@@ -25,11 +25,13 @@ const defaultConfig = {
             size: 13,
             font: 'monospace' // should be only monospaced fonts
         },
-        lineSpacing: 3,
-        markerTemplate: '{user}@{canvasName} %'
+        lineSpacing: 3
     },
     marker: {
         template: '{user}@{canvasName} %',
+    },
+    buffer: {
+        maxBufferSize: 1000
     }
 };
 
@@ -54,5 +56,19 @@ export class Terminal {
             this.config.frequency,
             this.buffer
         )
+
+        window.addEventListener('keydown', (event: KeyboardEvent) => {
+            switch (event.keyCode) {
+                case 32:
+                    this.buffer.addLine(Math.random() + "");
+                    break;
+                case 38:
+                    this.buffer.increaseOffset();
+                    break;
+                case 40:
+                    this.buffer.decreaseOffset();
+                    break;
+            }
+        });
     }
 }

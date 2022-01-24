@@ -21,6 +21,13 @@ export class InputBuffer {
         },
     ];
 
+    /**
+     * Buffer offset to shift showing lines
+     * when pressing key UP or DOWN
+     * @private
+     */
+    #bufferOffset: number = 0;
+
     terminal: Terminal;
     measurer: Measurer;
 
@@ -31,7 +38,7 @@ export class InputBuffer {
 
     /**
      * Allows us to iterate over InputBuffer object
-     * @returns {Generator<*, void, *>}
+     * @returns {GeneratorFunction<*, void, *>}
      */
     * [Symbol.iterator](): Generator<string> {
         const maxCharsWidth = this.terminal.canvas.maxCharsWidth;
@@ -47,6 +54,45 @@ export class InputBuffer {
                 yield lineWithMarker;
             }
         }
+    }
+
+    increaseOffset(): void {
+        if (this.terminal.canvas.maxLines + this.#bufferOffset < this.linesNumber) {
+            this.#bufferOffset++;
+        }
+    }
+
+    decreaseOffset(): void {
+        if (this.#bufferOffset > 0) {
+            this.#bufferOffset--;
+        }
+    }
+
+    /**
+     * Adds one line to buffer
+     * @param line
+     */
+    addLine(line: string): void {
+        // Remove first element when the buffer is overflowing
+        if (this.linesNumber === this.terminal.config.buffer.maxBufferSize) {
+            this.#buffer.shift();
+        }
+        this.#buffer.push(line);
+    }
+
+    /**
+     * TODO kinda inefficient
+     */
+    get linesNumber(): number {
+        let i = 0;
+        for (const _ of this) {
+            i++;
+        }
+        return i;
+    }
+
+    get offset(): number {
+        return this.#bufferOffset;
     }
 
     #buildMarker(): string {

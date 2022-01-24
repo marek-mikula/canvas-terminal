@@ -30,4 +30,14 @@ export class Canvas {
     get maxCharsWidth(): number {
         return Math.ceil(this.maxLineWidth / this.letterWidth);
     }
+
+    /**
+     * Returns maximum number of lines that can be shown
+     * in terminal
+     */
+    get maxLines(): number {
+        return Math.floor((
+            this.terminal.canvas.height - (2 * this.terminal.config.canvas.padding)) / (this.terminal.config.text.font.size + this.terminal.config.text.lineSpacing)
+        );
+    }
 }
